@@ -18,10 +18,9 @@ const s3 = new AWS.S3({
 const upload = async (attachments, sid) => {
   return await Promise.all(
     attachments.map(async (attachment, i) => {
-      const fileName = path.basename(attachment);
-      const fileContent = fs.readFileSync(
-        `${process.env.WP_ROOT}/${attachment}`
-      );
+      const filePath = decodeURI(attachment);
+      const fileName = path.basename(filePath);
+      const fileContent = fs.readFileSync(`${process.env.WP_ROOT}/${filePath}`);
 
       const res = await s3
         .upload({
@@ -32,10 +31,9 @@ const upload = async (attachments, sid) => {
         })
         .promise()
         .then((data) => {
-          const status = `[${i + 1}/${attachments.length}]`;
           const action = "Upload".yellow;
 
-          console.log(`${status} ${action}: ${fileName}`);
+          console.log(`${action}: ${fileName}`);
 
           return data;
         });
@@ -46,7 +44,7 @@ const upload = async (attachments, sid) => {
 };
 
 dbConnect().then(async (mongo) => {
-  await wp.posts(5).then(async (posts) => {
+  await wp.posts().then(async (posts) => {
     await Promise.all(
       posts.map(async ({ attachments, sid, ...post }, i) => {
         const postExists = await Post.findOne({ sid });
