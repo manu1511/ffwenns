@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema(
   {
+    sid: {
+      type: Number,
+      required: true,
+    },
     date: Date,
     title: String,
     content: String,

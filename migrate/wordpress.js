@@ -27,6 +27,7 @@ const getPosts = async (limit) => {
 
   return await Promise.all(
     rows.map(async (row) => ({
+      sid: row.id,
       date: row.post_date,
       title: row.post_title,
       content: row.post_text,
