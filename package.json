@@ -7,10 +7,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "mongoose": "^5.11.18",
+    "mongoose": "5.11.15",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.853.0",
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "mysql2": "^2.2.5",
     "php-serialize": "^4.0.2"

@@ -14,7 +14,7 @@ const postSchema = new Schema(
       type: String,
       index: true,
     },
-    attachments: [String],
+    attachments: [Object],
     source: {
       type: String,
       required: true,
