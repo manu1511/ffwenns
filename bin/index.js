@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const dbConnect = require("../util/dbConnect");
+const dbConnect = require("../util/mongo");
 const wp = require("../migrate/wordpress");
 const Post = require("../models/post");
 
