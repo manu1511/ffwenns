@@ -7,6 +7,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "apollo-server-micro": "^2.21.0",
+    "graphql": "^15.5.0",
     "mongoose": "5.11.15",
     "next": "latest",
     "react": "^16.13.1",
